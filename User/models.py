@@ -35,6 +35,6 @@ class Participant(AbstractUser):
     
     def __str__(self):
         
-        return f"{self.email} and {self.username}"
+        return self.username
     class Meta:
         verbose_name="Participant"  

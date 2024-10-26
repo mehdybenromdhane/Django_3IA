@@ -1,0 +1,19 @@
+
+
+<h1>title : {{c.title }}</h1>
+
+<h2>description : {{c.description}}</h2>
+
+<h2>Capacity : {{c.capacity}}</h2>
+
+
+
+{% for r in reservations %}
+
+<p>  {% if r.confirmed %} Confirmed {% else %} {% endif %} </p>
+
+<p>Reservation Date : {{r.reservation_date}}</p>
+{% endfor %}
+
+
+<a href="{% url 'list'  %}">Go back</a>

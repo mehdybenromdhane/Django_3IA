@@ -1,0 +1,77 @@
+
+
+
+
+
+<center>
+{% if user.is_authenticated %}
+    <h1>welcome {{user}}</h1>
+
+    <a href="{% url 'logout' %}"> Logout </a>
+
+    {% else %}
+
+    <a href="{% url 'login' %}"> Login</a>
+
+    <a href="{% url 'register' %}"> register</a>
+
+    {% endif %}
+<form  method="get" action="{% url 'list' %}">
+
+    <label for="">Select category</label>
+<select name="category" id=""  onchange="this.form.submit()">
+
+
+    <option value="vide">select</option>
+    {% for c in category %}
+    <option value="{{c.id}}" > {{c.title}} </option>
+    {% endfor %}
+</select>
+
+
+</form>
+</center>
+<table border="1" align="center">
+<caption>List of conferences</caption>
+    <tr>
+        <td>Title</td>
+        <td>Category</td>
+        <td>Description</td>
+        <td>capacity</td>
+        <td>location</td>
+        <td>price</td>
+        <td>start date</td>
+        <td>end date</td>
+        <td>actions</td>
+        <td>Update</td>
+        <td>Delete</td>
+
+    </tr>
+
+
+    {% for i in data %}
+    <tr>
+        <td>{{i.title}}</td>
+        <td>{{i.category}}</td>
+        <td>{{i.description}}</td>
+        <td>{{i.capacity}}</td>
+        <td>{{i.location}}</td>
+        <td>{{i.price}}</td>
+        <td>{{i.start_date}}</td>
+        <td>{{i.end_date}}</td>
+
+        <td><a href="{% url 'detailsClass'  i.id   %}">Details</a></td>
+
+        <td><a href="{% url 'updateClass' i.id %}"> Update</a></td>
+
+        <td><a href="{% url 'deleteClass' i.id %}"> Delete</a></td>
+
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+
+
+<a href="{% url 'add' %}"> Add Conference</a>

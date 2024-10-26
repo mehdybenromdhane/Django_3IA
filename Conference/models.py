@@ -78,3 +78,6 @@ class Reservation(models.Model):
          
         if reservation_count >= 3:
             raise ValidationError("You can only reserve 3 conferences per day")
+        
+    class Meta:
+        unique_together=('conference','participant')

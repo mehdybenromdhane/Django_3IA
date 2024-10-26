@@ -15,7 +15,7 @@ from django.utils import timezone
 class ReservationForm(admin.TabularInline):
     model=Reservation
     
-    extra=2
+    extra=1
     
     readonly_fields=['confirmed']
     
